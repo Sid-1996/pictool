@@ -1,7 +1,7 @@
 # 🛠️ PicTool 圖片工具箱｜免費線上圖片轉換・AI去背・壓縮
 
 [![GitHub](https://img.shields.io/github/license/Sid-1996/pictool)](https://opensource.org/licenses/MIT)
-[![GitHub Pages](https://img.shields.io/badge/hosted-GitHub%20Pages-blue)](https://sid-1996.github.io/pictool/)
+[![GitHub Pages](https://img.shields.io/badge/🔗-GitHub%20Pages-222?logo=githubpages&logoColor=white)](https://sid-1996.github.io/pictool/)
 
 **PicTool** 是一款輕量級、免安裝的線上圖片工具箱，直接在瀏覽器中執行，無需上傳伺服器。提供三大核心功能：**圖片格式轉換**、**AI 自動去背**、**圖片壓縮到指定大小**。
 
