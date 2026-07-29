@@ -149,7 +149,7 @@ export class UIManager {
 
         for (const [id, data] of imagesMap) {
             const card = document.createElement('div');
-            card.className = 'image-card bg-white/50 dark:bg-gray-800/70 backdrop-blur-sm rounded-xl p-4 slide-in border border-white/20 dark:border-gray-700/40';
+            card.className = 'image-card bg-white dark:bg-gray-800 backdrop-blur-sm rounded-xl p-4 slide-in border border-gray-200 dark:border-gray-700';
             card.dataset.imageId = id;
 
             const header = document.createElement('div');
@@ -169,7 +169,7 @@ export class UIManager {
             header.appendChild(removeBtn);
 
             const imgDiv = document.createElement('div');
-            imgDiv.className = 'aspect-square bg-white dark:bg-gray-700 rounded-xl overflow-hidden mb-2';
+            imgDiv.className = 'aspect-square bg-gray-50 dark:bg-gray-700 rounded-xl overflow-hidden mb-2';
             const img = document.createElement('img');
             img.src = data.image ? data.image.src : '';
             img.alt = data.name;
@@ -232,7 +232,7 @@ export class UIManager {
             container.appendChild(batchBtn);
 
             const sep = document.createElement('div');
-            sep.className = 'border-t border-gray-200/50 dark:border-gray-600/80 my-4';
+            sep.className = 'border-t border-gray-200 dark:border-gray-600 my-4';
             container.appendChild(sep);
         }
 
@@ -286,10 +286,10 @@ export class UIManager {
             const item = document.createElement('div');
             item.className = 'text-center';
             item.innerHTML = `
-                <div class="bg-white/60 dark:bg-gray-700/50 p-2 rounded-xl backdrop-blur-sm border border-white/20 dark:border-gray-600/40">
+                <div class="bg-gray-50 dark:bg-gray-700 p-2 rounded-xl border border-gray-200 dark:border-gray-600">
                     <canvas width="${size}" height="${size}" class="mx-auto" style="max-width: ${Math.min(size, 64)}px; max-height: ${Math.min(size, 64)}px; image-rendering: pixelated;"></canvas>
-                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-1" title="${displayName}">${displayName.length > 20 ? displayName.substring(0, 17) + '...' : displayName}</p>
-                    <p class="text-xs text-gray-400 dark:text-gray-400">${size}×${size} ${result.format.toUpperCase()}</p>
+                    <p class="text-xs text-gray-600 dark:text-gray-400 mt-1" title="${displayName}">${displayName.length > 20 ? displayName.substring(0, 17) + '...' : displayName}</p>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">${size}×${size} ${result.format.toUpperCase()}</p>
                 </div>
             `;
 
@@ -364,10 +364,10 @@ export class UIManager {
     showStatus(message, type = 'info') {
         const el = this.el.statusMessage;
         el.textContent = message;
-        el.className = `mt-6 p-4 rounded-2xl text-center backdrop-blur-sm ${
-            type === 'success' ? 'bg-green-100/80 dark:bg-green-900/30 text-green-800 dark:text-green-300 border border-green-200/50 dark:border-green-700/50' :
-            type === 'error' ? 'bg-red-100/80 dark:bg-red-900/30 text-red-800 dark:text-red-300 border border-red-200/50 dark:border-red-700/50' :
-            'bg-blue-100/80 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 border border-blue-200/50 dark:border-blue-700/50'
+        el.className = `mt-6 p-4 rounded-2xl text-center ${
+            type === 'success' ? 'bg-green-100 dark:bg-green-900/40 text-green-800 dark:text-green-300 border border-green-200 dark:border-green-800' :
+            type === 'error' ? 'bg-red-100 dark:bg-red-900/40 text-red-800 dark:text-red-300 border border-red-200 dark:border-red-800' :
+            'bg-blue-100 dark:bg-blue-900/40 text-blue-800 dark:text-blue-300 border border-blue-200 dark:border-blue-800'
         }`;
         el.classList.remove('hidden');
 

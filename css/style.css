@@ -42,12 +42,12 @@ body:not(.dark) {
 }
 .upload-zone.dragover {
     border-color: #3b82f6;
-    background-color: rgba(59, 130, 246, 0.08);
+    background-color: rgba(59, 130, 246, 0.05);
     transform: scale(1.02);
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
 }
 .dark .upload-zone.dragover {
-    background-color: rgba(59, 130, 246, 0.15);
+    background-color: rgba(59, 130, 246, 0.1);
     border-color: #60a5fa;
 }
 
@@ -61,24 +61,24 @@ body:not(.dark) {
 /* ===== Radio Button Styles (Size / Format) ===== */
 .size-radio:checked + label,
 .format-radio:checked + label {
-    background: rgba(59, 130, 246, 0.9);
+    background: #3b82f6;
     color: white;
-    border-color: rgba(59, 130, 246, 0.9);
+    border-color: #3b82f6;
     transform: scale(1.05);
     box-shadow: 0 4px 14px rgba(59, 130, 246, 0.35);
 }
 .dark .size-radio:checked + label,
 .dark .format-radio:checked + label {
-    background: rgba(96, 165, 250, 0.9);
-    color: #1f2937;
-    border-color: rgba(96, 165, 250, 0.9);
+    background: #3b82f6;
+    color: white;
+    border-color: #3b82f6;
 }
 
 /* ===== Compress Format Radios ===== */
 .compress-format-radio:checked + label {
-    background: rgba(59, 130, 246, 0.9);
+    background: #3b82f6;
     color: white;
-    border-color: rgba(59, 130, 246, 0.9);
+    border-color: #3b82f6;
     transform: scale(1.05);
     box-shadow: 0 4px 14px rgba(59, 130, 246, 0.35);
 }
@@ -86,12 +86,12 @@ body:not(.dark) {
     color: white;
 }
 .dark .compress-format-radio:checked + label {
-    background: rgba(96, 165, 250, 0.9);
-    color: #1f2937;
-    border-color: rgba(96, 165, 250, 0.9);
+    background: #3b82f6;
+    color: white;
+    border-color: #3b82f6;
 }
 .dark .compress-format-radio:checked + label span {
-    color: #1f2937;
+    color: white;
 }
 
 /* ===== Progress Bar ===== */
@@ -113,10 +113,10 @@ body:not(.dark) {
     transform: translateX(1.5rem);
 }
 .toggle-checkbox:checked + .toggle-label .toggle-bg {
-    background: rgba(59, 130, 246, 0.9);
+    background: #3b82f6;
 }
 .dark .toggle-checkbox:checked + .toggle-label .toggle-bg {
-    background: rgba(96, 165, 250, 0.9);
+    background: #3b82f6;
 }
 .dark .toggle-label .toggle-bg {
     background: #4b5563;
@@ -144,13 +144,13 @@ body:not(.dark) {
     transition: all 0.3s ease;
 }
 .mode-tab.active {
-    background: rgba(59, 130, 246, 0.9);
+    background: #3b82f6;
     color: white;
     box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }
 .dark .mode-tab.active {
-    background: rgba(96, 165, 250, 0.9);
-    color: #1f2937;
+    background: #3b82f6;
+    color: white;
 }
 .mode-tab:not(.active) {
     color: #4b5563;

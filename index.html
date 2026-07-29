@@ -84,31 +84,31 @@
         <!-- Header with Dark Mode Toggle -->
         <div class="flex justify-between items-center mb-8">
             <div class="text-center flex-1">
-                <h1 class="text-4xl font-bold text-gray-800 dark:text-white mb-2"><i data-lucide="wrench" class="inline w-8 h-8 text-blue-600 dark:text-blue-400"></i> PicTool 圖片工具箱</h1>
-                <p class="text-gray-600 dark:text-gray-300 text-lg">免費線上轉換 • AI去背 • 壓縮大小 • <span class="font-semibold text-blue-600 dark:text-blue-400">批次處理</span></p>
+                <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-2"><i data-lucide="wrench" class="inline w-8 h-8 text-blue-600 dark:text-blue-400"></i> PicTool 圖片工具箱</h1>
+                <p class="text-gray-600 dark:text-gray-300 text-lg">免費線上轉換 • AI去背 • 壓縮大小 • <span class="font-semibold text-blue-700 dark:text-blue-400">批次處理</span></p>
                 <p class="text-sm text-gray-500 dark:text-gray-400 mt-2"><i data-lucide="sparkles" class="inline w-4 h-4"></i> 完全在瀏覽器執行，不上傳伺服器，保護您的隱私</p>
             </div>
-            <button id="darkModeToggle" class="p-2.5 rounded-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-md shadow-lg border border-white/20 dark:border-gray-700/50 hover:shadow-xl transition-all duration-300">
+            <button id="darkModeToggle" class="p-2.5 rounded-full bg-white dark:bg-gray-800 backdrop-blur-md shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300">
                 <i data-lucide="moon" class="w-5 h-5 text-gray-600 dark:hidden"></i>
                 <i data-lucide="sun" class="w-5 h-5 text-yellow-500 hidden dark:block"></i>
             </button>
         </div>
 
         <!-- Mode Tabs -->
-        <div class="flex mb-6 bg-white/60 dark:bg-gray-800/80 backdrop-blur-lg rounded-2xl p-1.5 shadow-lg border border-white/20 dark:border-gray-700/50 gap-1">
+        <div class="flex mb-6 bg-white dark:bg-gray-800 backdrop-blur-lg rounded-2xl p-1.5 shadow-lg border border-gray-200 dark:border-gray-700 gap-1">
             <button id="tabConvert" class="mode-tab active flex-1 py-3 px-4 rounded-lg font-medium text-center"><i data-lucide="refresh-cw" class="inline w-4 h-4"></i> 格式轉換</button>
             <button id="tabDeback" class="mode-tab flex-1 py-3 px-4 rounded-lg font-medium text-center"><i data-lucide="wand-2" class="inline w-4 h-4"></i> AI 去背</button>
             <button id="tabCompress" class="mode-tab flex-1 py-3 px-4 rounded-lg font-medium text-center"><i data-lucide="package" class="inline w-4 h-4"></i> 壓縮圖片</button>
         </div>
 
         <!-- Upload Zone -->
-        <div id="uploadZone" class="upload-zone bg-white/50 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl p-12 text-center mb-8 cursor-pointer shadow-lg border border-white/20 dark:border-gray-700/50">
+        <div id="uploadZone" class="upload-zone bg-white dark:bg-gray-800 backdrop-blur-md rounded-2xl p-12 text-center mb-8 cursor-pointer shadow-lg border border-gray-200 dark:border-gray-700">
             <div id="uploadContent">
                 <div id="uploadIcon" class="text-6xl mb-4 animate-bounce-slow">📁</div>
                 <h3 id="uploadTitle" class="text-xl font-semibold text-gray-700 dark:text-gray-200 mb-2">上傳圖片轉換為ICO圖示</h3>
                 <p id="uploadDesc" class="text-gray-500 dark:text-gray-400 mb-4">支援PNG、JPG、WebP等格式 • 批次轉換多個檔案</p>
-                <div class="bg-blue-50/80 dark:bg-blue-900/20 backdrop-blur-sm border border-blue-200/50 dark:border-blue-700/50 rounded-xl p-4 mb-4">
-                    <p class="text-blue-700 dark:text-blue-300 font-medium"><i data-lucide="lightbulb" class="inline w-4 h-4"></i> 快速轉換：按 <kbd class="bg-blue-200/80 dark:bg-blue-700/80 px-2 py-1 rounded text-sm">Ctrl+V</kbd> 直接貼上圖片！</p>
+                <div class="bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800 rounded-xl p-4 mb-4">
+                    <p class="text-blue-700 dark:text-blue-300 font-medium"><i data-lucide="info" class="inline w-4 h-4"></i> 快速轉換：按 <kbd class="bg-blue-200/80 dark:bg-blue-700/80 px-2 py-1 rounded text-sm">Ctrl+V</kbd> 直接貼上圖片！</p>
                     <p id="uploadHint" class="text-blue-600 dark:text-blue-400 text-sm mt-2">📦 輸出標準ICO格式，適用於網站圖示、應用程式圖示</p>
                 </div>
                 <button id="uploadBtn" class="btn-modern bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white px-6 py-3 rounded-xl font-medium">選擇圖片</button>
@@ -117,7 +117,7 @@
 
         <!-- Batch Images Display -->
         <div id="batchImagesSection" class="hidden mb-8">
-            <div class="bg-white/70 dark:bg-gray-800/90 backdrop-blur-md rounded-2xl p-6 shadow-md border border-white/20 dark:border-gray-700/50">
+            <div class="bg-white dark:bg-gray-800 backdrop-blur-md rounded-2xl p-6 shadow-md border border-gray-200 dark:border-gray-700">
                 <div class="flex justify-between items-center mb-4">
                     <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-200">已上傳的圖片 (<span id="imageCount">0</span>)</h3>
                     <button id="clearAllBtn" class="text-red-600 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300 text-sm font-medium flex items-center gap-1"><i data-lucide="trash-2" class="w-4 h-4"></i> 清除全部</button>
@@ -216,14 +216,14 @@
             </div>
 
             <div id="debackPreviewArea" class="hidden grid grid-cols-2 gap-4 mb-4">
-                <div class="bg-white/50 dark:bg-gray-700/50 backdrop-blur-sm rounded-xl p-3 border border-white/20 dark:border-gray-600/40">
+                <div class="bg-gray-50 dark:bg-gray-700 backdrop-blur-sm rounded-xl p-3 border border-gray-200 dark:border-gray-600">
                     <div class="text-xs text-gray-500 dark:text-gray-400 mb-2"><i data-lucide="file" class="inline w-3 h-3"></i> 原圖</div>
                     <div class="aspect-square bg-white dark:bg-gray-600 rounded-xl overflow-hidden">
                         <img id="debackOriginalImg" class="w-full h-full object-contain">
                     </div>
                     <div id="debackOriginalInfo" class="text-xs text-gray-400 mt-1"></div>
                 </div>
-                <div class="bg-white/50 dark:bg-gray-700/50 backdrop-blur-sm rounded-xl p-3 border border-white/20 dark:border-gray-600/40">
+                <div class="bg-gray-50 dark:bg-gray-700 backdrop-blur-sm rounded-xl p-3 border border-gray-200 dark:border-gray-600">
                     <div class="text-xs text-gray-500 dark:text-gray-400 mb-2"><i data-lucide="scan" class="inline w-3 h-3"></i> 去背結果</div>
                     <div class="aspect-square bg-white dark:bg-gray-600 rounded-xl overflow-hidden relative">
                         <canvas id="debackResultCanvas" class="w-full h-full"></canvas>
@@ -244,7 +244,7 @@
 
         <!-- Progress Bar -->
         <div id="progressSection" class="hidden mb-6">
-            <div class="bg-white/70 dark:bg-gray-800/90 backdrop-blur-md rounded-2xl p-6 shadow-md border border-white/20 dark:border-gray-700/50">
+            <div class="bg-white dark:bg-gray-800 backdrop-blur-md rounded-2xl p-6 shadow-md border border-gray-200 dark:border-gray-700">
                 <div class="flex justify-between items-center mb-2">
                     <span class="text-sm font-medium text-gray-700 dark:text-gray-300">處理進度</span>
                     <span id="progressText" class="text-sm text-gray-500 dark:text-gray-400">0%</span>
@@ -256,7 +256,7 @@
 
         <!-- Download Options -->
         <div id="downloadSection" class="hidden">
-            <div class="bg-white/70 dark:bg-gray-800/90 backdrop-blur-md rounded-2xl p-6 shadow-md border border-white/20 dark:border-gray-700/50">
+            <div class="bg-white dark:bg-gray-800 backdrop-blur-md rounded-2xl p-6 shadow-md border border-gray-200 dark:border-gray-700">
                 <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-200 mb-4"><i data-lucide="download" class="inline w-5 h-5"></i> 下載選項</h3>
                 <div class="mb-6">
                     <h4 class="text-md font-medium text-gray-600 dark:text-gray-300 mb-3">下載檔案</h4>
@@ -264,7 +264,7 @@
                 </div>
                 <div id="previewSection" class="mb-4">
                     <h4 class="text-md font-medium text-gray-600 dark:text-gray-300 mb-3">預覽結果</h4>
-                    <div id="previewGrid" class="preview-grid bg-gray-50 dark:bg-gray-700/50 rounded-xl p-4"></div>
+                    <div id="previewGrid" class="preview-grid bg-gray-50 dark:bg-gray-700 rounded-xl p-4 border border-gray-200 dark:border-gray-600"></div>
                 </div>
             </div>
         </div>
@@ -316,25 +316,25 @@
         <div id="compressResult" class="hidden bg-white/70 dark:bg-gray-800/70 backdrop-blur-md rounded-2xl p-6 mb-6 shadow-md border border-white/20 dark:border-gray-700/50">
             <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-200 mb-4"><i data-lucide="bar-chart-2" class="inline w-5 h-5"></i> 壓縮結果</h3>
             <div class="grid md:grid-cols-2 gap-6 mb-6">
-                <div class="bg-white/50 dark:bg-gray-700/50 backdrop-blur-sm rounded-xl p-4 border border-white/20 dark:border-gray-600/40">
+                <div class="bg-gray-50 dark:bg-gray-700 backdrop-blur-sm rounded-xl p-4 border border-gray-200 dark:border-gray-600">
                     <h4 class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-2"><i data-lucide="file" class="inline w-4 h-4"></i> 原始圖片</h4>
                     <div class="aspect-square bg-white dark:bg-gray-600 rounded-xl overflow-hidden mb-2"><img id="compressOriginalPreview" class="w-full h-full object-contain"></div>
                     <div id="compressOriginalSize" class="text-sm text-gray-700 dark:text-gray-300"></div>
                 </div>
-                <div class="bg-white/50 dark:bg-gray-700/50 backdrop-blur-sm rounded-xl p-4 border border-white/20 dark:border-gray-600/40">
+                <div class="bg-gray-50 dark:bg-gray-700 backdrop-blur-sm rounded-xl p-4 border border-gray-200 dark:border-gray-600">
                     <h4 class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-2"><i data-lucide="package" class="inline w-4 h-4"></i> 壓縮後</h4>
                     <div class="aspect-square bg-white dark:bg-gray-600 rounded-xl overflow-hidden mb-2"><img id="compressResultPreview" class="w-full h-full object-contain"></div>
                     <div id="compressResultSize" class="text-sm text-gray-700 dark:text-gray-300"></div>
                     <div id="compressQualityUsed" class="text-xs text-gray-400 mt-1"></div>
                 </div>
             </div>
-            <div id="compressSavings" class="text-center p-4 bg-green-50/80 dark:bg-green-900/20 backdrop-blur-sm border border-green-200/50 dark:border-green-700/50 rounded-xl mb-4"></div>
+            <div id="compressSavings" class="text-center p-4 bg-green-50 dark:bg-green-900/30 border border-green-200 dark:border-green-800 rounded-xl mb-4"></div>
             <div class="text-center"><button id="compressDownloadBtn" class="btn-modern bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white px-8 py-3 rounded-2xl font-semibold text-lg shadow-md"><i data-lucide="download" class="inline w-5 h-5"></i> 下載壓縮圖片</button></div>
         </div>
 
         <!-- About & Privacy -->
         <div id="privacySection" class="mt-8 grid md:grid-cols-2 gap-6">
-            <div class="bg-white/40 dark:bg-gray-800/60 backdrop-blur-lg rounded-2xl p-6 shadow-md border border-white/30 dark:border-gray-700/40">
+            <div class="bg-white dark:bg-gray-800 backdrop-blur-lg rounded-2xl p-6 shadow-md border border-gray-200 dark:border-gray-700">
                 <h3 class="text-lg font-semibold text-blue-800 dark:text-blue-200 mb-3"><i data-lucide="wrench" class="inline w-5 h-5"></i> 關於 PicTool</h3>
                 <div class="text-sm text-blue-700 dark:text-blue-300 space-y-2">
                     <p>PicTool 是一款免費線上圖片工具箱，提供三大核心功能：</p>
@@ -347,10 +347,10 @@
                     <p><i data-lucide="shield" class="inline w-4 h-4"></i> <strong>隱私優先</strong> — 不收集個人資料或圖片內容</p>
                 </div>
             </div>
-            <div class="bg-white/40 dark:bg-gray-800/60 backdrop-blur-lg rounded-2xl p-6 shadow-md border border-white/30 dark:border-gray-700/40">
+            <div class="bg-white dark:bg-gray-800 backdrop-blur-lg rounded-2xl p-6 shadow-md border border-gray-200 dark:border-gray-700">
                 <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-200 mb-3"><i data-lucide="clipboard-list" class="inline w-5 h-5"></i> 使用提示</h3>
                 <div class="text-sm text-gray-600 dark:text-gray-300 space-y-2">
-                    <p><i data-lucide="lightbulb" class="inline w-4 h-4"></i> 按 <kbd class="bg-gray-200/80 dark:bg-gray-600/80 px-2 py-0.5 rounded text-xs">Ctrl+V</kbd> 直接貼上剪貼簿圖片</p>
+                    <p><i data-lucide="info" class="inline w-4 h-4"></i> 按 <kbd class="bg-gray-200/80 dark:bg-gray-600/80 px-2 py-0.5 rounded text-xs">Ctrl+V</kbd> 直接貼上剪貼簿圖片</p>
                     <p><i data-lucide="folder" class="inline w-4 h-4"></i> 支援拖曳多個檔案批次上傳</p>
                     <p><i data-lucide="moon" class="inline w-4 h-4"></i> 右上角按鈕切換深色模式</p>
                     <p><i data-lucide="bar-chart-2" class="inline w-4 h-4"></i> 切換「壓縮圖片」分頁壓縮檔案大小</p>
@@ -372,7 +372,7 @@
 
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-    <script>lucide.createIcons();</script>
+    <script>if (window.lucide) lucide.createIcons();</script>
 
     <!-- Main Application Script (ES Module) -->
     <script type="module" src="js/app.js"></script>
