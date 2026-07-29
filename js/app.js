@@ -22,6 +22,7 @@ class App {
         this.processedResults = new Map(); // imageId -> { format, size, data }
         this.isProcessing = false;
         this.debackingInProgress = false;
+        this.debackAbort = false;
 
         this.init();
     }
@@ -249,8 +250,12 @@ class App {
 
     clearAll() {
         const count = this.fileHandler.getCount();
+        this.debackAbort = true;
+        this.debackingInProgress = false;
+        this.clearDebackResults();
         this.fileHandler.clearAll();
         this.processedResults.clear();
+        this.ui.el.debackToggle.checked = false;
         this.ui.hideCompressResult();
         this.ui.hideDebackPanel();
         this.ui.el.compressDebackBgSection?.classList.add('hidden');
@@ -300,7 +305,6 @@ class App {
                 this.ui.updateImageDisplay(this.fileHandler.images);
                 this.ui.el.debackToggle.checked = true;
                 this.ui.showDebackPanel();
-                this.startBatchDebacking();
             }
         } else {
             // 壓縮模式
@@ -593,12 +597,10 @@ class App {
 
     async startBatchDebacking() {
         if (this.debackingInProgress) {
-            while (this.debackingInProgress) {
-                await new Promise(r => setTimeout(r, 200));
-            }
             return;
         }
 
+        this.debackAbort = false;
         this.debackingInProgress = true;
         const ui = this.ui;
         ui.showDebackPanel();
@@ -611,16 +613,20 @@ class App {
             let processed = 0;
 
             for (const [id, data] of entries) {
+                if (this.debackAbort) return;
                 if (data.debackedImage) { 
                     processed++; 
                     continue; 
                 }
                 if (!data.image) continue;
+                if (!this.fileHandler.images.has(id)) continue;
 
                 ui.updateDebackProgress(processed + 1, entries.length, data.name);
 
                 try {
                     const blob = await this.backgroundRemover.removeBackground(data.image);
+                    if (this.debackAbort) return;
+                    if (!this.fileHandler.images.has(id)) continue;
                     const img = await this.imageProcessor.blobToImage(blob);
                     data.debackedBlob = blob;
                     data.debackedImage = img;
@@ -633,9 +639,11 @@ class App {
                 }
             }
 
-            ui.showDebackComplete(`去背完成 (${processed}/${entries.length})`, processed > 0);
-            if (processed > 0) {
-                this.ui.showStatus('去背完成！', 'success');
+            if (!this.debackAbort) {
+                ui.showDebackComplete(`去背完成 (${processed}/${entries.length})`, processed > 0);
+                if (processed > 0) {
+                    this.ui.showStatus('去背完成！', 'success');
+                }
             }
 
         } catch (err) {
