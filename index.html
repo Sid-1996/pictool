@@ -42,6 +42,26 @@
             }
         }
     </script>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "首頁",
+                    "item": "https://sid-1996.github.io/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "PicTool 圖片工具箱",
+                    "item": "https://sid-1996.github.io/pictool/"
+                }
+            ]
+        }
+    </script>
 
     <!-- External CSS & JS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -367,7 +387,15 @@
 
     <!-- Footer -->
     <footer class="w-full text-center py-6 text-sm text-gray-500 dark:text-gray-400 mt-8">
-        <i data-lucide="wrench" class="inline w-4 h-4"></i> PicTool 圖片工具箱 — 免費開源 · <a href="https://github.com/Sid-1996/pictool" target="_blank" rel="noopener" class="text-blue-600 dark:text-blue-400 underline hover:text-blue-700 dark:hover:text-blue-300">GitHub</a> · 使用 MIT License
+        <div class="flex flex-wrap items-center justify-center gap-3 mb-4">
+            <a href="https://ko-fi.com/K3K11KMXOL" target="_blank" rel="noopener" class="btn-modern inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#FF5E5B] hover:bg-[#e5534f] text-white text-sm font-medium shadow-sm transition-colors"><i data-lucide="coffee" class="inline w-4 h-4"></i> Ko-fi</a>
+            <a href="https://www.paypal.com/ncp/payment/GJS4D5VTSVWG4" target="_blank" rel="noopener" class="btn-modern inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#00457C] hover:bg-[#003366] text-white text-sm font-medium shadow-sm transition-colors"><i data-lucide="credit-card" class="inline w-4 h-4"></i> PayPal</a>
+            <a href="https://p.ecpay.com.tw/E0E3A" target="_blank" rel="noopener" class="btn-modern inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#8A2BE2] hover:bg-[#7a24cc] text-white text-sm font-medium shadow-sm transition-colors"><i data-lucide="shield" class="inline w-4 h-4"></i> ECPay</a>
+            <a href="https://afdian.com/a/sid-1996" target="_blank" rel="noopener" class="btn-modern inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#946CE6] hover:bg-[#845fd6] text-white text-sm font-medium shadow-sm transition-colors"><i data-lucide="heart" class="inline w-4 h-4"></i> 愛發電</a>
+        </div>
+        <div>
+            <i data-lucide="wrench" class="inline w-4 h-4"></i> PicTool 圖片工具箱 — 免費開源 · <a href="https://github.com/Sid-1996/pictool" target="_blank" rel="noopener" class="text-blue-600 dark:text-blue-400 underline hover:text-blue-700 dark:hover:text-blue-300">GitHub</a> · 使用 MIT License
+        </div>
     </footer>
 
     <!-- Lucide Icons -->
