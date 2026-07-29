@@ -149,7 +149,7 @@ export class UIManager {
 
         for (const [id, data] of imagesMap) {
             const card = document.createElement('div');
-            card.className = 'image-card bg-white/50 dark:bg-gray-700/50 backdrop-blur-sm rounded-xl p-4 slide-in border border-white/20 dark:border-white/5';
+            card.className = 'image-card bg-white/50 dark:bg-gray-800/70 backdrop-blur-sm rounded-xl p-4 slide-in border border-white/20 dark:border-gray-700/40';
             card.dataset.imageId = id;
 
             const header = document.createElement('div');
@@ -169,7 +169,7 @@ export class UIManager {
             header.appendChild(removeBtn);
 
             const imgDiv = document.createElement('div');
-            imgDiv.className = 'aspect-square bg-white dark:bg-gray-600 rounded-lg overflow-hidden mb-2';
+            imgDiv.className = 'aspect-square bg-white dark:bg-gray-700 rounded-xl overflow-hidden mb-2';
             const img = document.createElement('img');
             img.src = data.image ? data.image.src : '';
             img.alt = data.name;
@@ -232,17 +232,17 @@ export class UIManager {
             container.appendChild(batchBtn);
 
             const sep = document.createElement('div');
-            sep.className = 'border-t border-gray-200/50 dark:border-gray-600/50 my-4';
+            sep.className = 'border-t border-gray-200/50 dark:border-gray-600/80 my-4';
             container.appendChild(sep);
         }
 
         // 個別下載按鈕
-        const formatColors = {
-            ico: 'blue',
-            png: 'green',
-            webp: 'orange',
-            jpeg: 'red',
-            jpg: 'red'
+        const formatClasses = {
+            ico: 'bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600',
+            png: 'bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600',
+            webp: 'bg-orange-600 hover:bg-orange-700 dark:bg-orange-500 dark:hover:bg-orange-600',
+            jpeg: 'bg-red-600 hover:bg-red-700 dark:bg-red-500 dark:hover:bg-red-600',
+            jpg: 'bg-red-600 hover:bg-red-700 dark:bg-red-500 dark:hover:bg-red-600'
         };
         const formatIcons = {
             ico: 'file',
@@ -256,12 +256,12 @@ export class UIManager {
             const result = processedResults.get(id);
             if (!result) continue;
             
-            const info = formatColors[result.format] || 'blue';
+            const colorClass = formatClasses[result.format] || 'bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600';
             const icon = formatIcons[result.format] || 'file';
             const displayName = fileNameGenerator(id, result);
             
             const btn = document.createElement('button');
-            btn.className = `btn-modern w-full bg-${info}-600 hover:bg-${info}-700 dark:bg-${info}-500 dark:hover:bg-${info}-600 text-white px-4 py-2 rounded-xl font-medium mb-2`;
+            btn.className = `btn-modern w-full ${colorClass} text-white px-4 py-2 rounded-xl font-medium mb-2`;
             btn.innerHTML = `<i data-lucide="${icon}" class="inline w-4 h-4"></i> 下載 ${displayName}`;
             btn.dataset.action = 'downloadSingle';
             btn.dataset.imageId = id;
@@ -286,10 +286,10 @@ export class UIManager {
             const item = document.createElement('div');
             item.className = 'text-center';
             item.innerHTML = `
-                <div class="bg-white/60 dark:bg-gray-600/60 p-2 rounded-xl backdrop-blur-sm border border-white/20 dark:border-white/5">
+                <div class="bg-white/60 dark:bg-gray-700/50 p-2 rounded-xl backdrop-blur-sm border border-white/20 dark:border-gray-600/40">
                     <canvas width="${size}" height="${size}" class="mx-auto" style="max-width: ${Math.min(size, 64)}px; max-height: ${Math.min(size, 64)}px; image-rendering: pixelated;"></canvas>
                     <p class="text-xs text-gray-500 dark:text-gray-400 mt-1" title="${displayName}">${displayName.length > 20 ? displayName.substring(0, 17) + '...' : displayName}</p>
-                    <p class="text-xs text-gray-400 dark:text-gray-500">${size}×${size} ${result.format.toUpperCase()}</p>
+                    <p class="text-xs text-gray-400 dark:text-gray-400">${size}×${size} ${result.format.toUpperCase()}</p>
                 </div>
             `;
 

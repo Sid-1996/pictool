@@ -35,7 +35,7 @@ body:not(.dark) {
 
 /* ===== Upload Zone ===== */
 .upload-zone {
-    border: 2px dashed #cbd5e1;
+    border: 2px dashed #94a3b8;
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
@@ -118,6 +118,9 @@ body:not(.dark) {
 .dark .toggle-checkbox:checked + .toggle-label .toggle-bg {
     background: rgba(96, 165, 250, 0.9);
 }
+.dark .toggle-label .toggle-bg {
+    background: #4b5563;
+}
 
 /* ===== Animations ===== */
 @keyframes pulse {
@@ -153,7 +156,7 @@ body:not(.dark) {
     color: #4b5563;
 }
 .dark .mode-tab:not(.active) {
-    color: #9ca3af;
+    color: #d1d5db;
 }
 .mode-tab:not(.active):hover {
     background-color: #f3f4f6;
