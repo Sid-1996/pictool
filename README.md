@@ -2,6 +2,10 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![GitHub Pages](https://img.shields.io/badge/hosted-GitHub%20Pages-blue)](https://sid-1996.github.io/pictool/)
+[![GitHub stars](https://img.shields.io/github/stars/Sid-1996/pictool?style=flat&logo=github)](https://github.com/Sid-1996/pictool/stargazers)
+[![GitHub last commit](https://img.shields.io/github/last-commit/Sid-1996/pictool?style=flat&logo=github)](https://github.com/Sid-1996/pictool/commits)
+[![Visitors](https://api.visitorbadge.io/api/visitors?path=Sid-1996%2Fpictool&labelColor=%230d1117&countColor=%23263759)](https://visitorbadge.io)
+[![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg)](https://github.com/Sid-1996/pictool/pulls)
 
 **PicTool** 是一款輕量級、免安裝的線上圖片工具箱，直接在瀏覽器中執行，無需上傳伺服器。提供三大核心功能：**圖片格式轉換**、**AI 自動去背**、**圖片壓縮到指定大小**。
 
@@ -98,7 +102,10 @@
 
 # 🛠️ PicTool - Free Online Image Toolkit
 
-[![GitHub](https://img.shields.io/github/license/Sid-1996/pictool)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![GitHub stars](https://img.shields.io/github/stars/Sid-1996/pictool?style=flat&logo=github)](https://github.com/Sid-1996/pictool/stargazers)
+[![GitHub last commit](https://img.shields.io/github/last-commit/Sid-1996/pictool?style=flat&logo=github)](https://github.com/Sid-1996/pictool/commits)
+[![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg)](https://github.com/Sid-1996/pictool/pulls)
 
 A lightweight, browser-based image toolkit with **format conversion**, **AI background removal**, and **image compression**. No installation, no server upload — everything runs in your browser.
 
