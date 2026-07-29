@@ -87,9 +87,12 @@
 
 ## ☕ 支持作者
 
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/K3K11KMXOL)
+如果 PicTool 對你有幫助，歡迎用你喜歡的方式支持我。
 
-[💚 綠界科技贊助](https://p.ecpay.com.tw/E0E3A)
+[![Ko-fi](https://img.shields.io/badge/Ko--fi-FF5E5B?logo=kofi&logoColor=white&label=Support%20Sid)](https://ko-fi.com/K3K11KMXOL)
+[![PayPal](https://img.shields.io/badge/PayPal-00457C?logo=paypal&logoColor=white&label=Support%20Sid)](https://www.paypal.com/ncp/payment/GJS4D5VTSVWG4)
+[![ECPay](https://img.shields.io/badge/ECPay-8A2BE2?logo=amazonpay&logoColor=white&label=Support%20Sid)](https://p.ecpay.com.tw/E0E3A)
+[![愛發電](https://img.shields.io/badge/愛發電-946CE6?logo=afdian&logoColor=white&label=Support%20Sid)](https://afdian.com/a/sid-1996)
 
 ---
 
@@ -119,3 +122,12 @@ A lightweight, browser-based image toolkit with **format conversion**, **AI back
 ## License
 
 MIT
+
+## Support
+
+If this tool helps you, feel free to support me:
+
+[![Ko-fi](https://img.shields.io/badge/Ko--fi-FF5E5B?logo=kofi&logoColor=white&label=Support%20Sid)](https://ko-fi.com/K3K11KMXOL)
+[![PayPal](https://img.shields.io/badge/PayPal-00457C?logo=paypal&logoColor=white&label=Support%20Sid)](https://www.paypal.com/ncp/payment/GJS4D5VTSVWG4)
+[![ECPay](https://img.shields.io/badge/ECPay-8A2BE2?logo=amazonpay&logoColor=white&label=Support%20Sid)](https://p.ecpay.com.tw/E0E3A)
+[![愛發電](https://img.shields.io/badge/愛發電-946CE6?logo=afdian&logoColor=white&label=Support%20Sid)](https://afdian.com/a/sid-1996)
