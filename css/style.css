@@ -10,11 +10,16 @@
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* ===== Dark Mode Body Background ===== */
-.dark body,
-body.dark {
+/* ===== Dark Mode Body Background (default) ===== */
+.dark body {
     background-color: #0f172a;
     background-image: radial-gradient(at 20% 80%, rgba(59,130,246,0.12) 0, transparent 50%), radial-gradient(at 80% 20%, rgba(139,92,246,0.08) 0, transparent 50%);
+}
+
+/* ===== Light Mode Body Background (when dark class removed) ===== */
+body:not(.dark) {
+    background-color: #f8fafc;
+    background-image: radial-gradient(at 20% 80%, rgba(59,130,246,0.08) 0, transparent 50%), radial-gradient(at 80% 20%, rgba(139,92,246,0.06) 0, transparent 50%);
 }
 
 /* ===== Button Micro-interaction ===== */

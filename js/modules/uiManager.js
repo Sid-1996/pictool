@@ -462,10 +462,15 @@ export class UIManager {
 
     // ===== 深色模式 =====
     initDarkMode() {
-        const isDark = localStorage.getItem('darkMode') === 'true';
-        if (isDark) {
+        // 預設暗色主題：html 加 dark class
+        const savedMode = localStorage.getItem('darkMode');
+        if (savedMode === 'false') {
+            // 使用者曾切換到亮色，保持亮色
+        } else {
+            // 預設暗色（包含首次訪問）
             document.documentElement.classList.add('dark');
         }
+
         this.el.darkModeToggle.addEventListener('click', () => {
             document.documentElement.classList.toggle('dark');
             const isDarkMode = document.documentElement.classList.contains('dark');
