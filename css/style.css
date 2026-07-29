@@ -1,3 +1,33 @@
+/* ===== Glassmorphism ===== */
+.glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.dark .glass {
+    background: rgba(17, 24, 39, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ===== Dark Mode Body Background ===== */
+.dark body,
+body.dark {
+    background-color: #0f172a;
+    background-image: radial-gradient(at 20% 80%, rgba(59,130,246,0.12) 0, transparent 50%), radial-gradient(at 80% 20%, rgba(139,92,246,0.08) 0, transparent 50%);
+}
+
+/* ===== Button Micro-interaction ===== */
+.btn-modern {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn-modern:hover {
+    transform: translateY(-1px);
+}
+.btn-modern:active {
+    transform: translateY(0) scale(0.98);
+}
+
 /* ===== Upload Zone ===== */
 .upload-zone {
     border: 2px dashed #cbd5e1;
@@ -7,12 +37,12 @@
 }
 .upload-zone.dragover {
     border-color: #3b82f6;
-    background-color: #eff6ff;
+    background-color: rgba(59, 130, 246, 0.08);
     transform: scale(1.02);
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
 }
 .dark .upload-zone.dragover {
-    background-color: #1e3a8a;
+    background-color: rgba(59, 130, 246, 0.15);
     border-color: #60a5fa;
 }
 
@@ -26,34 +56,34 @@
 /* ===== Radio Button Styles (Size / Format) ===== */
 .size-radio:checked + label,
 .format-radio:checked + label {
-    background-color: #3b82f6;
+    background: rgba(59, 130, 246, 0.9);
     color: white;
-    border-color: #3b82f6;
+    border-color: rgba(59, 130, 246, 0.9);
     transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 4px 14px rgba(59, 130, 246, 0.35);
 }
 .dark .size-radio:checked + label,
 .dark .format-radio:checked + label {
-    background-color: #60a5fa;
+    background: rgba(96, 165, 250, 0.9);
     color: #1f2937;
-    border-color: #60a5fa;
+    border-color: rgba(96, 165, 250, 0.9);
 }
 
 /* ===== Compress Format Radios ===== */
 .compress-format-radio:checked + label {
-    background-color: #3b82f6;
+    background: rgba(59, 130, 246, 0.9);
     color: white;
-    border-color: #3b82f6;
+    border-color: rgba(59, 130, 246, 0.9);
     transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 4px 14px rgba(59, 130, 246, 0.35);
 }
 .compress-format-radio:checked + label span {
     color: white;
 }
 .dark .compress-format-radio:checked + label {
-    background-color: #60a5fa;
+    background: rgba(96, 165, 250, 0.9);
     color: #1f2937;
-    border-color: #60a5fa;
+    border-color: rgba(96, 165, 250, 0.9);
 }
 .dark .compress-format-radio:checked + label span {
     color: #1f2937;
@@ -66,7 +96,7 @@
 
 /* ===== Image Cards ===== */
 .image-card {
-    transition: all 0.3s ease;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .image-card:hover {
     transform: translateY(-2px);
@@ -78,10 +108,10 @@
     transform: translateX(1.5rem);
 }
 .toggle-checkbox:checked + .toggle-label .toggle-bg {
-    background-color: #3b82f6;
+    background: rgba(59, 130, 246, 0.9);
 }
 .dark .toggle-checkbox:checked + .toggle-label .toggle-bg {
-    background-color: #60a5fa;
+    background: rgba(96, 165, 250, 0.9);
 }
 
 /* ===== Animations ===== */
@@ -106,12 +136,12 @@
     transition: all 0.3s ease;
 }
 .mode-tab.active {
-    background-color: #3b82f6;
+    background: rgba(59, 130, 246, 0.9);
     color: white;
     box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }
 .dark .mode-tab.active {
-    background-color: #60a5fa;
+    background: rgba(96, 165, 250, 0.9);
     color: #1f2937;
 }
 .mode-tab:not(.active) {

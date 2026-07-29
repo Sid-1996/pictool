@@ -176,9 +176,10 @@ class App {
             if (e.ctrlKey && e.key === 'v') {
                 // 僅顯示提示 (實際貼上由 paste 事件處理)
                 const hint = document.createElement('div');
-                hint.textContent = '📋 偵測到貼上指令...';
-                hint.className = 'fixed top-4 right-4 bg-blue-600 text-white px-4 py-2 rounded-lg shadow-lg z-50 animate-pulse';
+                hint.innerHTML = '<i data-lucide="clipboard" class="inline w-4 h-4"></i> 偵測到貼上指令...';
+                hint.className = 'fixed top-4 right-4 bg-blue-600 text-white px-4 py-2 rounded-xl shadow-lg z-50 animate-pulse flex items-center gap-2';
                 document.body.appendChild(hint);
+                if (window.lucide) lucide.createIcons();
                 setTimeout(() => hint.remove(), 1500);
             }
         });
@@ -226,7 +227,7 @@ class App {
             this.compressCurrentImage();
         }
 
-        this.ui.showStatus(`✅ 成功載入 ${ids.length} 個圖片！`, 'success');
+        this.ui.showStatus(`成功載入 ${ids.length} 個圖片！`, 'success');
         trackEvent('files_loaded', {
             file_count: ids.length,
             mode: this.ui.currentMode
@@ -331,7 +332,7 @@ class App {
             await this.processAllImages();
             this.ui.showDownloadSection();
             this.generateDownloadUI();
-            this.ui.showStatus('✅ 轉換完成！', 'success');
+            this.ui.showStatus('轉換完成！', 'success');
             trackEvent('conversion_completed', {
                 format: this.getSelectedFormat(),
                 size: this.getSelectedSize(),
@@ -339,12 +340,13 @@ class App {
             });
         } catch (err) {
             console.error('Conversion error:', err);
-            this.ui.showStatus('❌ 轉換失敗：' + err.message, 'error');
+            this.ui.showStatus('轉換失敗：' + err.message, 'error');
             trackEvent('conversion_error', { error_message: err.message });
         } finally {
             this.isProcessing = false;
             btn.disabled = false;
-            btn.textContent = '🚀 開始轉換';
+            btn.innerHTML = '<i data-lucide="play" class="inline w-5 h-5"></i> 開始轉換';
+            if (window.lucide) lucide.createIcons();
         }
     }
 
@@ -452,7 +454,7 @@ class App {
         const filename = this.generateFileName(imageId, result);
         this.downloadBlob(result.data, filename);
         trackEvent('file_download', { format: result.format, size: result.size });
-        this.ui.showStatus(`✅ 已下載 ${filename}`, 'success');
+        this.ui.showStatus(`已下載 ${filename}`, 'success');
     }
 
     downloadAllImages() {
@@ -471,7 +473,7 @@ class App {
                     this.downloadBlob(result.data, filename);
                     count++;
                     if (count === ids.length) {
-                        this.ui.showStatus(`✅ 批次下載完成！共 ${count} 個檔案`, 'success');
+                        this.ui.showStatus(`批次下載完成！共 ${count} 個檔案`, 'success');
                     }
                 }, count * 300);
             }
@@ -544,7 +546,7 @@ class App {
             data.compressQuality = result.quality;
 
             this.ui.showCompressResult(data, result, data.file);
-            this.ui.showStatus('✅ 壓縮完成！', 'success');
+            this.ui.showStatus('壓縮完成！', 'success');
 
             trackEvent('compress_completed', {
                 format,
@@ -555,7 +557,7 @@ class App {
 
         } catch (err) {
             console.error('Compression error:', err);
-            this.ui.showStatus('❌ 壓縮失敗：' + err.message, 'error');
+            this.ui.showStatus('壓縮失敗：' + err.message, 'error');
         } finally {
             this.isProcessing = false;
         }
@@ -573,7 +575,7 @@ class App {
         const unit = this.ui.el.compressSizeUnit?.value || 'MB';
         const filename = `${data.name}_compressed_${targetSize}${unit}.${ext}`;
         this.downloadBlob(data.compressResultBlob, filename);
-        this.ui.showStatus(`✅ 已下載 ${filename}`, 'success');
+        this.ui.showStatus(`已下載 ${filename}`, 'success');
     }
 
     // ===== 去背功能 =====
@@ -631,16 +633,16 @@ class App {
                 }
             }
 
-            ui.showDebackComplete(`✅ 去背完成 (${processed}/${entries.length})`, processed > 0);
+            ui.showDebackComplete(`去背完成 (${processed}/${entries.length})`, processed > 0);
             if (processed > 0) {
-                this.ui.showStatus('✅ 去背完成！', 'success');
+                this.ui.showStatus('去背完成！', 'success');
             }
 
         } catch (err) {
             console.error('Batch deback error:', err);
             if (this.ui.el.debackToggle) this.ui.el.debackToggle.checked = false;
-            ui.showDebackComplete('❌ 去背失敗: ' + err.message, false);
-            this.ui.showStatus('❌ 去背失敗：' + err.message, 'error');
+            ui.showDebackComplete('去背失敗: ' + err.message, false);
+            this.ui.showStatus('去背失敗：' + err.message, 'error');
         } finally {
             this.debackingInProgress = false;
         }
@@ -666,7 +668,7 @@ class App {
         }
         const filename = data.name + '_debacked.png';
         this.downloadBlob(data.debackedBlob, filename);
-        this.ui.showStatus(`✅ 已下載 ${filename}`, 'success');
+        this.ui.showStatus(`已下載 ${filename}`, 'success');
     }
 
     // ===== 輔助 =====

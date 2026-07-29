@@ -97,22 +97,22 @@ export class UIManager {
 
         // Upload zone text
         if (mode === 'convert') {
-            this.el.uploadIcon.textContent = '📁';
+            this.el.uploadIcon.innerHTML = '<i data-lucide="upload-cloud" class="w-16 h-16 text-blue-500 dark:text-blue-400"></i>';
             this.el.uploadTitle.textContent = '上傳圖片轉換／去背';
             this.el.uploadDesc.textContent = '支援 PNG、JPG、WebP • 批次轉換多個檔案';
-            this.el.uploadHint.textContent = '🎨 開啟「自動去背」可 AI 移除背景再轉換';
+            this.el.uploadHint.innerHTML = '<i data-lucide="wand-2" class="inline w-4 h-4"></i> 開啟「自動去背」可 AI 移除背景再轉換';
             this.el.uploadBtn.textContent = '選擇圖片';
         } else if (mode === 'deback') {
-            this.el.uploadIcon.textContent = '🎨';
+            this.el.uploadIcon.innerHTML = '<i data-lucide="wand-2" class="w-16 h-16 text-purple-500 dark:text-purple-400"></i>';
             this.el.uploadTitle.textContent = '上傳圖片進行 AI 去背';
             this.el.uploadDesc.textContent = '支援 PNG、JPG、WebP • 自動移除圖片背景';
-            this.el.uploadHint.textContent = '🎨 完全在瀏覽器執行，圖片不上傳伺服器';
+            this.el.uploadHint.innerHTML = '<i data-lucide="shield" class="inline w-4 h-4"></i> 完全在瀏覽器執行，圖片不上傳伺服器';
             this.el.uploadBtn.textContent = '選擇圖片去背';
         } else {
-            this.el.uploadIcon.textContent = '📦';
+            this.el.uploadIcon.innerHTML = '<i data-lucide="package" class="w-16 h-16 text-green-500 dark:text-green-400"></i>';
             this.el.uploadTitle.textContent = '上傳圖片壓縮大小';
             this.el.uploadDesc.textContent = '支援 PNG、JPG、WebP • 壓縮到指定大小';
-            this.el.uploadHint.textContent = '📦 二分搜尋最佳品質，精準達到目標大小';
+            this.el.uploadHint.innerHTML = '<i data-lucide="target" class="inline w-4 h-4"></i> 二分搜尋最佳品質，精準達到目標大小';
             this.el.uploadBtn.textContent = '選擇圖片壓縮';
         }
 
@@ -130,6 +130,9 @@ export class UIManager {
         } else if (mode === 'deback') {
             // 去背模式：批次區由外部控制，僅確保批次區顯示
         }
+
+        // Re-initialize Lucide icons for dynamically created elements
+        if (window.lucide) lucide.createIcons();
     }
 
     // ===== 批次圖片顯示 =====
@@ -146,7 +149,7 @@ export class UIManager {
 
         for (const [id, data] of imagesMap) {
             const card = document.createElement('div');
-            card.className = 'image-card bg-gray-50 dark:bg-gray-700 rounded-lg p-4 slide-in';
+            card.className = 'image-card bg-white/50 dark:bg-gray-700/50 backdrop-blur-sm rounded-xl p-4 slide-in border border-white/20 dark:border-white/5';
             card.dataset.imageId = id;
 
             const header = document.createElement('div');
@@ -157,8 +160,8 @@ export class UIManager {
             nameSpan.textContent = data.name || '未命名';
             
             const removeBtn = document.createElement('button');
-            removeBtn.className = 'text-red-500 hover:text-red-700 text-sm';
-            removeBtn.textContent = '❌';
+            removeBtn.className = 'text-red-500 hover:text-red-700 text-sm p-1 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors';
+            removeBtn.innerHTML = '<i data-lucide="x" class="w-4 h-4"></i>';
             removeBtn.dataset.action = 'removeImage';
             removeBtn.dataset.imageId = id;
             
@@ -182,6 +185,9 @@ export class UIManager {
             card.appendChild(sizeDiv);
             this.el.batchList.appendChild(card);
         }
+
+        // Re-initialize Lucide icons for dynamically created elements
+        if (window.lucide) lucide.createIcons();
     }
 
     // ===== 進度條 =====
@@ -220,13 +226,13 @@ export class UIManager {
         // 批次下載按鈕
         if (imageIds.length > 1) {
             const batchBtn = document.createElement('button');
-            batchBtn.className = 'w-full bg-purple-600 hover:bg-purple-700 dark:bg-purple-500 dark:hover:bg-purple-600 text-white px-4 py-3 rounded-lg font-bold transition-colors mb-4 text-lg';
-            batchBtn.textContent = `⚡ 一鍵下載全部 (${imageIds.length} 個檔案)`;
+            batchBtn.className = 'btn-modern w-full bg-purple-600 hover:bg-purple-700 dark:bg-purple-500 dark:hover:bg-purple-600 text-white px-4 py-3 rounded-xl font-bold mb-4 text-lg';
+            batchBtn.innerHTML = `<i data-lucide="zap" class="inline w-5 h-5"></i> 一鍵下載全部 (${imageIds.length} 個檔案)`;
             batchBtn.dataset.action = 'batchDownload';
             container.appendChild(batchBtn);
 
             const sep = document.createElement('div');
-            sep.className = 'border-t border-gray-200 dark:border-gray-600 my-4';
+            sep.className = 'border-t border-gray-200/50 dark:border-gray-600/50 my-4';
             container.appendChild(sep);
         }
 
@@ -238,12 +244,12 @@ export class UIManager {
             jpeg: 'red',
             jpg: 'red'
         };
-        const formatEmojis = {
-            ico: '📦',
-            png: '🖼️',
-            webp: '🚀',
-            jpeg: '🖼️',
-            jpg: '🖼️'
+        const formatIcons = {
+            ico: 'file',
+            png: 'image',
+            webp: 'zap',
+            jpeg: 'image',
+            jpg: 'image'
         };
 
         for (const id of imageIds) {
@@ -251,16 +257,19 @@ export class UIManager {
             if (!result) continue;
             
             const info = formatColors[result.format] || 'blue';
-            const emoji = formatEmojis[result.format] || '📄';
+            const icon = formatIcons[result.format] || 'file';
             const displayName = fileNameGenerator(id, result);
             
             const btn = document.createElement('button');
-            btn.className = `w-full bg-${info}-600 hover:bg-${info}-700 dark:bg-${info}-500 dark:hover:bg-${info}-600 text-white px-4 py-2 rounded-lg font-medium transition-colors mb-2`;
-            btn.textContent = `${emoji} 下載 ${displayName}`;
+            btn.className = `btn-modern w-full bg-${info}-600 hover:bg-${info}-700 dark:bg-${info}-500 dark:hover:bg-${info}-600 text-white px-4 py-2 rounded-xl font-medium mb-2`;
+            btn.innerHTML = `<i data-lucide="${icon}" class="inline w-4 h-4"></i> 下載 ${displayName}`;
             btn.dataset.action = 'downloadSingle';
             btn.dataset.imageId = id;
             container.appendChild(btn);
         }
+
+        // Re-initialize Lucide icons for dynamically created elements
+        if (window.lucide) lucide.createIcons();
     }
 
     updatePreviewGrid(imagesMap, processedResults, imageProcessor) {
@@ -277,7 +286,7 @@ export class UIManager {
             const item = document.createElement('div');
             item.className = 'text-center';
             item.innerHTML = `
-                <div class="bg-white dark:bg-gray-600 p-2 rounded-lg shadow-sm border dark:border-gray-500">
+                <div class="bg-white/60 dark:bg-gray-600/60 p-2 rounded-xl backdrop-blur-sm border border-white/20 dark:border-white/5">
                     <canvas width="${size}" height="${size}" class="mx-auto" style="max-width: ${Math.min(size, 64)}px; max-height: ${Math.min(size, 64)}px; image-rendering: pixelated;"></canvas>
                     <p class="text-xs text-gray-500 dark:text-gray-400 mt-1" title="${displayName}">${displayName.length > 20 ? displayName.substring(0, 17) + '...' : displayName}</p>
                     <p class="text-xs text-gray-400 dark:text-gray-500">${size}×${size} ${result.format.toUpperCase()}</p>
@@ -319,7 +328,7 @@ export class UIManager {
         const bgRemovalOn = this.el.debackToggle?.checked || false;
         const srcImage = (bgRemovalOn && imageData.debackedImage) ? imageData.debackedImage : imageData.image;
         this.el.compressOriginalPreview.src = srcImage ? srcImage.src : '';
-        this.el.compressOriginalSize.textContent = '📄 檔案大小：' + this.formatFileSize(originalFile.size);
+        this.el.compressOriginalSize.textContent = '檔案大小：' + this.formatFileSize(originalFile.size);
 
         // 釋放舊的預覽 URL
         if (this._compressPreviewUrl) {
@@ -327,17 +336,20 @@ export class UIManager {
         }
         this._compressPreviewUrl = URL.createObjectURL(result.blob);
         this.el.compressResultPreview.src = this._compressPreviewUrl;
-        this.el.compressResultSize.textContent = '📦 檔案大小：' + this.formatFileSize(result.blob.size);
-        this.el.compressQualityUsed.textContent = '⚙️ 使用品質：' + Math.round(result.quality * 100) + '%';
+        this.el.compressResultSize.textContent = '檔案大小：' + this.formatFileSize(result.blob.size);
+        this.el.compressQualityUsed.textContent = '使用品質：' + Math.round(result.quality * 100) + '%';
 
         const savings = originalFile.size - result.blob.size;
         const pct = ((savings / originalFile.size) * 100).toFixed(1);
         const savingsEl = this.el.compressSavings;
         if (savings > 0) {
-            savingsEl.innerHTML = `<span class="text-green-700 dark:text-green-300 font-semibold text-lg">✅ 節省 ${this.formatFileSize(savings)}（${pct}%）</span>`;
+            savingsEl.innerHTML = `<span class="text-green-700 dark:text-green-300 font-semibold text-lg"><i data-lucide="check-circle" class="inline w-5 h-5"></i> 節省 ${this.formatFileSize(savings)}（${pct}%）</span>`;
         } else {
-            savingsEl.innerHTML = `<span class="text-yellow-600 dark:text-yellow-400 font-semibold text-lg">⚠️ 壓縮後反而變大，建議改用原始檔案</span>`;
+            savingsEl.innerHTML = `<span class="text-yellow-600 dark:text-yellow-400 font-semibold text-lg"><i data-lucide="alert-triangle" class="inline w-5 h-5"></i> 壓縮後反而變大，建議改用原始檔案</span>`;
         }
+
+        // Re-initialize Lucide icons for dynamically created elements
+        if (window.lucide) lucide.createIcons();
     }
 
     hideCompressResult() {
@@ -352,10 +364,10 @@ export class UIManager {
     showStatus(message, type = 'info') {
         const el = this.el.statusMessage;
         el.textContent = message;
-        el.className = `mt-6 p-4 rounded-lg text-center ${
-            type === 'success' ? 'bg-green-100 text-green-800' :
-            type === 'error' ? 'bg-red-100 text-red-800' :
-            'bg-blue-100 text-blue-800'
+        el.className = `mt-6 p-4 rounded-2xl text-center backdrop-blur-sm ${
+            type === 'success' ? 'bg-green-100/80 dark:bg-green-900/30 text-green-800 dark:text-green-300 border border-green-200/50 dark:border-green-700/50' :
+            type === 'error' ? 'bg-red-100/80 dark:bg-red-900/30 text-red-800 dark:text-red-300 border border-red-200/50 dark:border-red-700/50' :
+            'bg-blue-100/80 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 border border-blue-200/50 dark:border-blue-700/50'
         }`;
         el.classList.remove('hidden');
 
@@ -390,7 +402,7 @@ export class UIManager {
         this.el.debackProgressArea.classList.remove('hidden');
         this.el.debackProgressBar.style.width = `${pct}%`;
         this.el.debackProgressPercent.textContent = `${pct}%`;
-        this.el.debackProgressText.textContent = `🖼️ ${name} (${current}/${total})`;
+        this.el.debackProgressText.textContent = `${name} (${current}/${total})`;
     }
 
     showDebackPreview(originalSrc, originalInfo, debackedImg) {
